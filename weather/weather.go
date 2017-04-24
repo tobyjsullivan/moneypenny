@@ -59,7 +59,6 @@ func VancouverForecast() (*Forecast, error) {
 }
 
 type owmForecastResponse struct {
-    Code int `json:"cod"`
     List []*owmLine `json:"list"`
 }
 
