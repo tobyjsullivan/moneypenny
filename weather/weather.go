@@ -6,6 +6,7 @@ import (
     "fmt"
     "encoding/json"
     "os"
+    "errors"
 )
 
 const (
@@ -43,6 +44,10 @@ func VancouverForecast() (*Forecast, error) {
         return nil, err
     }
 
+    if resp.StatusCode != http.StatusOK {
+        return nil, errors.New("Received an unexpected response code.")
+    }
+
     decoder := json.NewDecoder(resp.Body)
     var fc owmForecastResponse
     err = decoder.Decode(&fc)
@@ -54,6 +59,7 @@ func VancouverForecast() (*Forecast, error) {
 }
 
 type owmForecastResponse struct {
+    Code int `json:"cod"`
     List []*owmLine `json:"list"`
 }
 

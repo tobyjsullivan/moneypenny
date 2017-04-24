@@ -59,11 +59,11 @@ func greeting() *matter {
     loc, _ := time.LoadLocation("America/Vancouver")
     hour := time.Now().In(loc).Hour()
     if hour < 12 {
-        return &matter{text: "Good morning Toby"}
+        return &matter{text: "Good morning Toby."}
     } else if hour < 18 {
-        return &matter{text: "Good afternoon Toby"}
+        return &matter{text: "Good afternoon Toby."}
     } else {
-        return &matter{text: "Good evening Toby"}
+        return &matter{text: "Good evening Toby."}
     }
 }
 
